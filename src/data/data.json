@@ -1,0 +1,38 @@
+[
+    {
+        "id" : 1,
+        "name" : "Bùi Phi Long",
+        "phone" : "01884440332",
+        "role"  : "admin"
+    },
+    {
+        "id" : 2,
+        "name" : "Đoàn Hoài Vân",
+        "phone" : "01884440332",
+        "role"  : "user"
+    },
+    {
+        "id" : 3,
+        "name" : "Bùi Phi Hồng",
+        "phone" : "01884440332",
+        "role"  : "user"
+    },
+    {
+        "id" : 4,
+        "name" : "Bùi Vân Phi",
+        "phone" : "01884440332",
+        "role"  : "user"
+    },
+    {
+        "id" : 5,
+        "name" : "Bùi Vân Thiên",
+        "phone" : "01884440332",
+        "role"  : "user"
+    },
+    {
+        "id" : 6,
+        "name" : "Đoàn Mỹ Linh",
+        "phone" : "01884440332",
+        "role"  : "user"
+    }
+]
