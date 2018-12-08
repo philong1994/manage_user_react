@@ -4,13 +4,13 @@ class Table extends Component {
     renderDataRow  = () => (
         this.props.dataUser.map((value,key) => (
             <tr key = {key}>
-            <td >{value.id}</td>
+            <td >{key+1}</td>
             <td>{value.name}</td>
             <td>{value.phone}</td>
             <td>{value.role}</td>
             <td className="btn-group">
                 <div className="btn btn-warning sua">
-                    <i className="fa fa-edit">Sửa</i>
+                    <i className="fa fa-edit" onClick={() => this.props.editUser(value)}>Sửa</i>
                 </div>
                 <div className="btn btn-danger sua">
                     <i className="fa fa-delete">Xóa</i>
@@ -24,7 +24,7 @@ class Table extends Component {
         return (
             <div className="col">
                 <table className="table table-striped  table-hover">
-                    <thead className="thead-inverse|thead-default">
+                    <thead className="thead-inverse">
                         <tr>
                             <th>STT</th>
                             <th>Tên</th>

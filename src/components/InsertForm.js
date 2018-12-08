@@ -4,9 +4,10 @@ class InsertForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            txtName : "",
-            txtPhone : "",
-            sltRole : "",
+            id : "",
+            name : "",
+            phone : "",
+            role : "",
         }
     }
     
@@ -16,14 +17,12 @@ class InsertForm extends Component {
         this.setState({
             [name] : value
         });
-        console.log(this.state);
         
-        var item = {};
-        item.id = "";
-        item.name = this.state.txtName;
-        item.phone = this.state.txtPhone;
-        item.role = this.state.sltRole;
-        console.log(item);
+        // var item = {};
+        // item.id = "";
+        // item.name = this.state.txtName;
+        // item.phone = this.state.txtPhone;
+        // item.role = this.state.sltRole;
         
         
     }
@@ -37,19 +36,19 @@ class InsertForm extends Component {
                         </div>
                         <div className="card-body">
                             <div className="form-group">
-                                <input type="text" className="form-control" name="txtName" id="txtName" placeholder="Tên" onChange={(event) => this.isChange(event)} />
+                                <input type="text" className="form-control" name="name" id="name" placeholder="Tên" onChange={(event) => this.isChange(event)} />
                             </div>
                             <div className="form-group">
-                                <input type="text" className="form-control" name="txtPhone" id="txtPhone" placeholder="SĐT" onChange={(event) => this.isChange(event)} />
+                                <input type="text" className="form-control" name="phone" id="phone" placeholder="SĐT"  onChange = {(event) => this.isChange(event)} />
                             </div>
                             <div className="form-group">
-                                <select name="sltRole" id="sltRole" className="form-control" onChange={(event) => this.isChange(event)}>
+                                <select name="role" id="role" className="form-control" onChange={(event) => this.isChange(event)}>
                                 <option value="">Chọn quyền</option>
                                 <option value="User">User</option>
                                 <option value="Admin">Admin</option>
                                 </select>
                             </div>
-                            <button type="submit" className="btn btn-primary btn-block">Submit</button>
+                            <button type="submit" className="btn btn-primary btn-block" onClick = {() => this.props.getInsertData(this.state.name,this.state.phone,this.state.role)}>Submit</button>
                         </div>
                     </div>
                 </div>
@@ -57,8 +56,6 @@ class InsertForm extends Component {
         }
     }
     render() {
-        //console.log(this.state);
-        
         return (
             <div>
                 {this.showForm()}
