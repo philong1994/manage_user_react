@@ -50,6 +50,24 @@ class App extends Component {
     });
     this.changeEditFormStatus();
   }
+  getEditUserData(info){
+    //console.log('sửa thành công');
+    this.state.dataUser.forEach((value,key)=>{
+        if(value.id === info.id){
+          value.name = info.name
+          value.phone = info.phone
+          value.role = info.role
+        }
+    })
+    
+  }
+  deleteUser = (userId) => {
+      var tempData = this.state.dataUser.filter(item => item.id !== userId);
+      this.setState({
+        dataUser:tempData
+      });
+      
+  }
   render(){
     var result = [];
     this.state.dataUser.forEach((item) => {
@@ -58,6 +76,7 @@ class App extends Component {
       }
     });
     return (
+      
       <div>
         <Header/>
         <SearchForm 
@@ -67,10 +86,16 @@ class App extends Component {
         changeEditFormStatus ={() => this.changeEditFormStatus()} 
         getSearchValue = {(val) => this.getSearchValue(val)}
         dataEditUser = {this.state.dataEditUser}
+        getEditUserInfo={(info)=>this.getEditUserData(info)}
         />
         <div className="container">
           <div className="row">
-            <Table dataUser = {this.state.searchVal ? result : this.state.dataUser} editUser = {(editVal) => this.editUser(editVal)} changeEditFormStatus ={() => this.changeEditFormStatus()} />
+            <Table 
+            dataUser = {this.state.searchVal ? result : this.state.dataUser} 
+            editUser = {(editVal) => this.editUser(editVal)} 
+            changeEditFormStatus ={() => this.changeEditFormStatus()}
+            deleteUser={(userId) => this.deleteUser(userId)}
+             />
             <InsertForm buttonStatus={this.state.buttonStatus} getInsertData={(name,phone,role) => this.getInsertData(name,phone,role)} />
           </div>
         </div>

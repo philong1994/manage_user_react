@@ -17,7 +17,18 @@ class EditUser extends Component {
             [name] : value
         });       
     }
+    saveButton = () =>{
+        var info = {};
+        info.id = this.state.id;
+        info.name = this.state.name;
+        info.phone = this.state.phone;
+        info.role = this.state.role;
+        this.props.getEditUserInfo(info);
+        this.props.changeEditFormStatus();
+    }
     render() {
+        //console.log(this.state);
+        
         return (
             <div className="row">
                 <div className="col">
@@ -39,7 +50,7 @@ class EditUser extends Component {
                                 <option value="admin">Admin</option>
                                 </select>
                             </div>
-                            <button type="submit" className="btn btn-danger btn-block" onClick={() => {this.props.changeEditFormStatus()}}>Lưu</button>
+                            <button type="submit" className="btn btn-danger btn-block" onClick={() => {this.saveButton()}}>Lưu</button>
                         </div>
                     </div>
                 </div>

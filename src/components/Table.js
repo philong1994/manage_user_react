@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
 class Table extends Component {
+    deleteUserClick = (userId) => {
+       // console.log(userId);
+       this.props.deleteUser(userId);
+        
+    }
     renderDataRow  = () => (
         this.props.dataUser.map((value,key) => (
             <tr key = {key}>
@@ -12,8 +17,8 @@ class Table extends Component {
                 <div className="btn btn-warning sua">
                     <i className="fa fa-edit" onClick={() => this.props.editUser(value)}>Sửa</i>
                 </div>
-                <div className="btn btn-danger sua">
-                    <i className="fa fa-delete">Xóa</i>
+                <div className="btn btn-danger " >
+                    <i className="fa fa-delete" onClick={() => this.deleteUserClick(value.id)}>Xóa</i>
                 </div>
             </td>
         </tr>

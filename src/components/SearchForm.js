@@ -5,7 +5,8 @@ class SearchForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            temTxtSearch : ""
+            temTxtSearch : "",
+            userObj : {}
         }
     }
 
@@ -16,9 +17,21 @@ class SearchForm extends Component {
             return <button type="button" className="btn btn-info btn-lg btn-block" onClick={() => this.props.changeStatus()} >Thêm mới</button>
         }
     }
+    getEditUserInfo = (info) => {
+        //console.log('aaaa' + info);
+        
+        this.setState({
+            userObj : info
+        });
+        this.props.getEditUserInfo(info);
+    }
     showEditForm = () => {
         if(this.props.formEditStatus === true){
-            return <EditUser changeEditFormStatus = {() => this.props.changeEditFormStatus()} dataEditUser = {this.props.dataEditUser}/>
+            return <EditUser 
+            changeEditFormStatus = {() => this.props.changeEditFormStatus()} 
+            dataEditUser = {this.props.dataEditUser}
+            getEditUserInfo = {(info)=>this.getEditUserInfo(info)}
+            />
         }
     }
     isChange = (event) => {
@@ -29,7 +42,6 @@ class SearchForm extends Component {
     }
 
     render() {
-        
         return (
             <div className="container">
                 {this.showEditForm()}
